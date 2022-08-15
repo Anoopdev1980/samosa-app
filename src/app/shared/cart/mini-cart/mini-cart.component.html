@@ -1,0 +1,36 @@
+<div *ngFor="let item of carts;let i=index" class="cart-item">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="../../../../assets/images/{{item.thumbnail}}" class="w-100" alt="">
+        </div>
+        <div class="col-md-8 minicart-content">
+            <div class="name"> {{item.varietyname }} <fa-icon [icon]="faTrash" class="font-tras"
+                    (click)="removeFromCart(i)"></fa-icon>
+            </div>
+            <div class="price-qty">
+                <div>
+                    Qty: {{item.qty}}
+                </div>
+
+                <div>Price: <fa-icon [icon]="faInr" class="font-inr"></fa-icon>
+                    {{item.price }} </div>
+            </div>
+            <div class="subtotal">  Subtotal
+                {{item.subtotal}}
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="row">
+    <ng-container *ngIf="cartTotal!=0">
+       
+        <div class="total">
+            <button type="button" class="btn btn-success" (click)="checkOut(carts)" >Checkout</button>
+          total:  {{cartTotal}}
+        </div>
+        
+    </ng-container>
+</div>

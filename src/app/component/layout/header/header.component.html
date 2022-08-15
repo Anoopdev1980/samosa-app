@@ -1,0 +1,51 @@
+<div class="container">
+    <header>
+        <div class="head position-relative">
+            <div class="logo">
+                <nav class="navbar navbar-dark ">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+                <a router-link="/" class="logo-link">
+                    <img src="../../../assets/images/samosa.png" class="samosa-logo" />
+                    <div class="logo-text">Samosa<span>&more</span></div>
+                </a>
+            </div>
+            <div class="head-right">
+                <div class="whatsapp">
+                    <i class="icon"></i><span class="no">+91 858 692 8792</span>
+                </div>
+                <div class="cart position-relative">
+                    <img src="../../../assets/images/samosa.png"  *ngIf="carts.length>=1" class="position-absolute cart-samosa"  />
+                    <i class="icon" (click)="showMinicart()"></i>
+                </div>
+                <div class="profile">
+                    <i class="icon"></i>
+                </div>
+                <!-- <fa-icon [icon]="faUser"></fa-icon>
+                <fa-icon [icon]="faCartPlus"></fa-icon> -->
+            </div>
+            <div class="mini-cart" *ngIf="isactiveMiniCart">
+                <ng-container *ngIf="carts.length>=1">
+                    <app-mini-cart></app-mini-cart>
+                </ng-container>
+                <ng-container *ngIf="carts.length===0">
+                    Your cart is empty!
+                    Add items to it now.
+                </ng-container>
+
+            </div>
+
+        </div>
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Collapsed content</h5>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+
+    </header>
+</div>

@@ -1,0 +1,26 @@
+<owl-carousel-o [options]="options">
+    <ng-container *ngFor="let prod of product">
+        <ng-template carouselSlide [id]="prod.varietyID">
+            <div class="slide">
+                <div class="room wrapper">
+                    <a href="{{prod.url}}" >
+                       <img id="img1" src="../../../../assets/images/DINNING.jpg" class="thumbnail" alt="{{prod.varietyname}}">  
+                       <!-- <div id="img1_1" class="wrapper-cell">
+                            <div class="image"></div> 
+                        </div>  -->
+                       <!-- <img class="d-block w-100" src="{{imgBaseUrl}}{{imageurl}}" alt="{{imageurl}}" *ngIf="diningRoom_media$ | async as imageurl" >  -->
+                        <div class="title">
+                            {{prod.varietyname}}
+                        </div>
+                        <p class="description">
+                         {{prod.description}}
+                        </p>
+                    </a>
+                </div> 
+            </div>
+          <!-- <img  class="d-none d-md-block w-100" [src]="slide.img" >
+          <img class="d-md-none d-xs-block w-100" [src]="slide.imgm" > -->
+        </ng-template>
+      </ng-container>
+        
+  </owl-carousel-o>

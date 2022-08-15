@@ -1,0 +1,23 @@
+import { environment } from './environments/environment';
+export const allApis = { 
+    variety:environment.baseUrl+'/samosa',
+    allSamosa:environment.baseUrl+'/samosadetails',
+    customerApi:  environment.baseUrl+'/occ/v2/zespri/orgUsers',
+    newsLatterApi: environment.baseUrl+'bhocc/v2/bh-spa/subscription/email/{email}&fields=DEFAULT?emailParam=',
+    claimItemDetails :  environment.baseUrl+'/occ/v2/zespri/claims', 
+    claimItem :  environment.baseUrl+'/occ/v2/zespri/claim-item', 
+    fileType :  environment.baseUrl+'/occ/v2/zespri/claims/files/{fileType}/customer', 
+    b2bUnitSelectApi :  environment.baseUrl+'/occ/v2/zespri/b2bUsers', 
+    claimValidate:  environment.baseUrl+'/occ/v2/zespri/claims/validate?fields=DEFAULT',
+    apiToken:environment.baseUrl+'/occ/v2/authorizationserver/oauth/token',
+    claimtype:environment.baseUrl+'/occ/v2/zespri/utils/claimTypeReason/rel',
+    filetype:environment.baseUrl+'/occ/v2/zespri/utils/claim/fileType',
+    claimSaveDraft:environment.baseUrl+'/occ/v2/zespri/claims/save',
+    claimSubmit:environment.baseUrl+'/occ/v2/zespri/claims/submit',
+    claimAllType :  environment.baseUrl+'/occ/v2/zespri/utils/claim/types',
+    claimAllStatus :  environment.baseUrl+'/occ/v2/zespri/utils/claim/statuses',
+    claimAllReasons :  environment.baseUrl+'/occ/v2/zespri/utils/claim/reasons', 
+    claimList :  environment.baseUrl+'/occ/v2/zespri/claims/filter', 
+    claimDelete :  environment.baseUrl+'/occ/v2/zespri/claims/',
+    attachmentDeleteAPI:environment.baseUrl+'/occ/v2/zespri/claims/',
+};
