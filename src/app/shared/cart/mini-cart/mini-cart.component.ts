@@ -20,6 +20,11 @@ export class MiniCartComponent implements OnInit {
     this.getData();
   }
   getData() {
+    let localUserID = localStorage.getItem('userID');
+    this.cartService.getCartByUser(localUserID).subscribe(res => { 
+      console.log(res);
+      
+    });
     this.cartService.data.subscribe(response => {
       this.carts = response;
       this.totalAmount();
@@ -28,15 +33,29 @@ export class MiniCartComponent implements OnInit {
   totalAmount() {
     let sum: number = 0;
     for (let i = 0; i < this.carts.length; i++) {
-      sum = sum + Number(this.carts[i].price);
+      sum = sum + Number(this.carts[i].subtotal);
     }
     this.cartTotal = sum;
   }
 
   removeFromCart(varietyID: any) {
     this.carts.forEach((element: any, index: any) => {
-      if (varietyID == index) { this.carts.splice(index, 1); }
+      if (varietyID == index) { 
+        this.carts.splice(index, 1); 
+
+        this.cartService.getIDbycartID(element.cartID).subscribe(res => { 
+          console.log(res,'details');
+          let id=res[0]._id;
+          this.cartService.removeCart(id).subscribe(res1 => { 
+            console.log(res1);
+            
+           });
+        });
+        // this.cartService.removeCart(varietyID).subscribe(res => { 
+        // });
+      }
     });
+
     this.cartService.sendData(this.carts);
     this.totalAmount();
   }
