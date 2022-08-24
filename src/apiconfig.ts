@@ -2,6 +2,11 @@ import { environment } from './environments/environment';
 export const allApis = { 
     variety:environment.baseUrl+'/samosa',
     allSamosa:environment.baseUrl+'/samosadetails',
+    addtocart:environment.baseUrl+'/addtocart',
+    getcartbycartId:environment.baseUrl+'/cartbycartid',
+    removecart:environment.baseUrl+'/deletecart',
+    userCarts:environment.baseUrl+'/usercart',
+    
     customerApi:  environment.baseUrl+'/occ/v2/zespri/orgUsers',
     newsLatterApi: environment.baseUrl+'bhocc/v2/bh-spa/subscription/email/{email}&fields=DEFAULT?emailParam=',
     claimItemDetails :  environment.baseUrl+'/occ/v2/zespri/claims', 

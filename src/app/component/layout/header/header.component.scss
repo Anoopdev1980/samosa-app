@@ -123,6 +123,8 @@
     padding: 15px;
     border: 1px solid #d1d1d1;
     width: 100%;
+    overflow-y: scroll;
+    height: 300px;
     @include laptop-and-up { 
         width: 350px;
     } 

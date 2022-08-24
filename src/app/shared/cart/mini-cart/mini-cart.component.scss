@@ -40,11 +40,20 @@
 }
 
 .cart-item{
-    padding-top: 25px;
-    padding-bottom: 10px;
+  padding-top: 17px;
+  padding-bottom: 15px;
     border-bottom:1px solid #e5e5e5;
     &:last-child{
         border-bottom: 0;
+    }
+    .row
+    {
+      .minicart-imgblock{
+        width: 35%;
+      }
+      .minicart-content{
+        width: 65%;
+      }
     }
   
 }
@@ -54,5 +63,5 @@
     display: flex;
     justify-content: space-between;
     font-weight: 700;
-    padding-top: 10px;
+    padding-top: 18px;
 }

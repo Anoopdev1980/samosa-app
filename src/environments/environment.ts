@@ -13,7 +13,8 @@ export const environment = {
     appId: "1:173782092509:web:44a76b7384f43e2ad56934",
     measurementId: "G-EGM4QMGEVE"
  },
- baseUrl: 'http://206.189.150.171:3000',
+// baseUrl: 'http://206.189.150.171:3000',
+baseUrl: 'http://localhost:3000',
 };
 
 /*

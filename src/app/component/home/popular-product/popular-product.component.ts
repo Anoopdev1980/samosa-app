@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from 'src/app/shared/cart/cart.service';
 import { VarietyService } from '../../services/variety.service';
-
+import { UUID } from 'angular2-uuid';
 @Component({
   selector: 'app-popular-product',
   templateUrl: './popular-product.component.html',
@@ -11,11 +11,11 @@ import { VarietyService } from '../../services/variety.service';
 export class PopularProductComponent implements OnInit {
 
   productList: any = [];
-  public carts:any[]=new Array();
+  public carts: any[] = new Array();
   public products = [];
-  
-  constructor(readonly variety: VarietyService, readonly cartService:CartService) { 
-   }
+
+  constructor(readonly variety: VarietyService, readonly cartService: CartService) {
+  }
 
   ngOnInit(): void {
     this.allSamosaList();
@@ -23,54 +23,68 @@ export class PopularProductComponent implements OnInit {
 
   allSamosaList() {
     this.variety.getAllSamosaDetails().subscribe(res => {
-      this.productList = res; 
+      this.productList = res;
     });
   }
-  addToCart(prod:any,i:number){   
-    if(this.carts.length>=1)
-    {
+  addToCart(prod: any, i: number) {
+    let carttype = "anonymous";
+    let userID;
+    let localUserID = localStorage.getItem('userID');
+    if (localUserID == undefined) {
+      localStorage.setItem('userID', UUID.UUID());
+    }
+    else {
+      userID = localUserID;
+    }
+    const cartID = Math.floor(100000000000000 * Math.random());
+    if (this.carts.length >= 1) {
       const index = this.carts.findIndex(object => {
         return object.varietyID === prod.varietyID;
-      }); 
+      });
       if (index !== -1) {
         let qty;
-      
-        
-        qty=this.carts[index].qty+1;
-        console.log(qty*this.carts[index].price,'=====<><><');
+        qty = this.carts[index].qty + 1;
         this.carts[index].qty = qty;
-        this.carts[index].subtotal=qty*this.carts[index].price;
+        this.carts[index].subtotal = qty * this.carts[index].price;
       }
-      else
-      {
-        let item={
-          "index":i,
-          "varietyID" : prod.varietyID,
-          "varietyname" : prod.varietyname,
+      else {
+        let item = {
+          "index": i,
+          "cartID": cartID,
+          "varietyID": prod.varietyID,
+          "varietyname": prod.varietyname,
           "price": prod.price[0].offer_price_formated,
-          "thumbnail":prod.samosadetails[0].thumbnail,
-          "qty":1,
-          "subtotal":prod.price[0].offer_price_formated
+          "thumbnail": prod.samosadetails[0].thumbnail,
+          "qty": 1,
+          "subtotal": prod.price[0].offer_price_formated,
+          "carttype": carttype,
+          "userID": userID
         };
         this.carts.push(item);
         this.cartService.sendData(this.carts);
-      } 
+        this.cartService.addToCart(item).subscribe(res => {
+        });
+      }
     }
-    else
-    {
-      console.log('new items'); 
-      let item={
-        "index":i,
-        "varietyID" : prod.varietyID,
-        "varietyname" : prod.varietyname,
+    else {
+      let item = {
+        "index": i,
+        "cartID": cartID,
+        "varietyID": prod.varietyID,
+        "varietyname": prod.varietyname,
         "price": prod.price[0].offer_price_formated,
-        "thumbnail":prod.samosadetails[0].thumbnail,
-        "qty":1,
-        "subtotal":prod.price[0].offer_price_formated
+        "thumbnail": prod.samosadetails[0].thumbnail,
+        "qty": 1,
+        "subtotal": prod.price[0].offer_price_formated,
+        "carttype": carttype,
+        "userID": userID
       };
       this.carts.push(item);
       this.cartService.sendData(this.carts);
-    }    
+      console.log(this.carts);
+      this.cartService.addToCart(item).subscribe(res => {
+      });
+    }
   }
 
   options: OwlOptions = {
