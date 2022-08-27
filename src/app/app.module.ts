@@ -16,6 +16,13 @@ import { SharedModule } from './shared/shared.module';
 import { OwlModule } from 'ngx-owl-carousel'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; 
 
+import {
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent 
@@ -33,10 +40,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
     OwlModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SocialLoginModule,
+    FormsModule, ReactiveFormsModule
   ],
   exports:[OwlModule,FontAwesomeModule],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('584003360090410'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,10 +7,14 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LoginComponent } from './header/login/login.component';
+import { FacebookLoginComponent } from './header/facebook-login/facebook-login.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    FacebookLoginComponent
   ],
   imports: [
     CommonModule ,
