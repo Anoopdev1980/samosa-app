@@ -9,15 +9,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from './header/login/login.component';
 import { FacebookLoginComponent } from './header/facebook-login/facebook-login.component';
+import { RegisterComponent } from './header/register/register.component';
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    FacebookLoginComponent
+    FacebookLoginComponent,
+    RegisterComponent
   ],
   imports: [
-    CommonModule ,
+    CommonModule,
     FontAwesomeModule,
     SharedModule,
   ],

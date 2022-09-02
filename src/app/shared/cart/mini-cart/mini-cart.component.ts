@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { faBellSlash, faTrashAlt, faRupeeSign, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mini-cart',
@@ -13,10 +14,11 @@ export class MiniCartComponent implements OnInit {
   cartTotal: Number = 0;
   faTrash = faTrashAlt;
   faInr = faRupeeSign;
-  constructor(readonly cartService: CartService) { 
+  constructor(readonly cartService: CartService, private router: Router) { 
+   
   }
 
-  ngOnInit(): void {
+  ngOnInit() { 
     this.getData();
   }
   getData() {
@@ -42,25 +44,22 @@ export class MiniCartComponent implements OnInit {
     this.carts.forEach((element: any, index: any) => {
       if (varietyID == index) { 
         this.carts.splice(index, 1); 
-
         this.cartService.getIDbycartID(element.cartID).subscribe(res => { 
           console.log(res,'details');
           let id=res[0]._id;
           this.cartService.removeCart(id).subscribe(res1 => { 
-            console.log(res1);
-            
+            console.log(res1); 
            });
-        });
-        // this.cartService.removeCart(varietyID).subscribe(res => { 
-        // });
+        }); 
       }
     });
 
     this.cartService.sendData(this.carts);
     this.totalAmount();
   }
-  checkOut(cart:any){
-
+  checkOut(cart:any){ 
+    this.cartService.updateFlag(false)
+    this.router.navigate(['login']);
   }
 
 }

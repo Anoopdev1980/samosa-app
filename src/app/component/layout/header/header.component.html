@@ -9,7 +9,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </nav>
-                <a router-link="/" class="logo-link">
+                <a routerLink="/home" class="logo-link">
                     <img src="../../../assets/images/samosa.png" class="samosa-logo" />
                     <div class="logo-text">Samosa<span>&more</span></div>
                 </a>
@@ -22,12 +22,12 @@
                     <img src="../../../assets/images/samosa.png"  *ngIf="carts.length>=1" class="position-absolute cart-samosa"  />
                     <i class="icon" (click)="showMinicart()"></i>
                 </div>
-                <div class="profile">
-                    <i class="icon"></i>
+                <div class="profile" (click)="login()" > 
+                    <i class="icon"></i> 
                 </div>
                 <!-- <fa-icon [icon]="faUser"></fa-icon>
                 <fa-icon [icon]="faCartPlus"></fa-icon> -->
-            </div>
+            </div> 
             <div class="mini-cart" *ngIf="isactiveMiniCart">
                 <ng-container *ngIf="carts.length>=1">
                     <app-mini-cart></app-mini-cart>
@@ -45,7 +45,8 @@
                 <h5 class="text-white h4">Collapsed content</h5>
                 <span class="text-muted">Toggleable via the navbar brand.</span>
             </div>
-        </div>
-
+        </div> 
     </header>
 </div>
+
+ 

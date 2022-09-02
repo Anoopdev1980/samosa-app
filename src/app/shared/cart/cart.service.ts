@@ -3,8 +3,7 @@ import { Observable, Subject, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';  
 import { HttpClient } from '@angular/common/http';  
 import { catchError } from 'rxjs/operators';
-import { allApis } from '../../../apiconfig';
-
+import { allApis } from '../../../apiconfig'; 
 export interface Todo {
   varietyID: any;
   varietyname: string;
@@ -19,6 +18,11 @@ export class CartService {
   removecart:string= allApis.removecart;
   userCarts:string=allApis.userCarts;
 
+  private isActiveMinicartPopup = new BehaviorSubject(false);
+  currentFlag = this.isActiveMinicartPopup.asObservable();
+
+  private  = new Subject<boolean>();
+
   private dataSource: BehaviorSubject<[]> = new BehaviorSubject<[]>([]);
   data: Observable<[]> = this.dataSource.asObservable(); 
   constructor(private http: HttpClient,) { }
@@ -26,6 +30,11 @@ export class CartService {
   sendData(cart: any) {  
     this.dataSource.next(cart);  
   } 
+
+  updateFlag(isActive: boolean) {
+    this.isActiveMinicartPopup.next(isActive);
+    }
+     
 
   addToCart(cart: any): Observable<any> {
     const url = this.addtocart; 
