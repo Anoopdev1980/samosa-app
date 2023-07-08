@@ -14,7 +14,8 @@ export const environment = {
     measurementId: "G-EGM4QMGEVE"
  },
 // baseUrl: 'http://206.189.150.171:3000',
-baseUrl: 'http://localhost:3000',
+//baseUrl: 'http://localhost:3000',
+baseUrl: 'https://samosanmore.in',
 };
 
 /*
