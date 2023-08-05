@@ -15,7 +15,7 @@ export const environment = {
  },
 // baseUrl: 'http://206.189.150.171:3000',
 //baseUrl: 'http://localhost:3000',
-baseUrl: 'https://samosanmore.in',
+baseUrl: 'https://samosanmore.in:8443',
 };
 
 
