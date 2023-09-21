@@ -1,2 +1,0 @@
-# samosa
-samosa
