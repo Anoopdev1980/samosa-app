@@ -7,13 +7,14 @@ import { faBellSlash, faTrashAlt, faRupeeSign, faCartPlus } from '@fortawesome/f
   templateUrl: './mini-cart.component.html',
   styleUrls: ['./mini-cart.component.scss']
 })
-export class MiniCartComponent implements OnInit { 
+export class MiniCartComponent implements OnInit {
+  [x: string]: any;
   isactiveMiniCart: boolean = false;
   public carts: any = [];
   cartTotal: Number = 0;
   faTrash = faTrashAlt;
   faInr = faRupeeSign;
-  constructor(readonly cartService: CartService) { 
+  constructor(readonly cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -21,9 +22,9 @@ export class MiniCartComponent implements OnInit {
   }
   getData() {
     let localUserID = localStorage.getItem('userID');
-    this.cartService.getCartByUser(localUserID).subscribe(res => { 
+    this.cartService.getCartByUser(localUserID).subscribe(res => {
       console.log(res);
-      
+
     });
     this.cartService.data.subscribe(response => {
       this.carts = response;
@@ -40,18 +41,18 @@ export class MiniCartComponent implements OnInit {
 
   removeFromCart(varietyID: any) {
     this.carts.forEach((element: any, index: any) => {
-      if (varietyID == index) { 
-        this.carts.splice(index, 1); 
+      if (varietyID == index) {
+        this.carts.splice(index, 1);
 
-        this.cartService.getIDbycartID(element.cartID).subscribe(res => { 
+        this.cartService.getIDbycartID(element.cartID).subscribe(res => {
           console.log(res,'details');
           let id=res[0]._id;
-          this.cartService.removeCart(id).subscribe(res1 => { 
+          this.cartService.removeCart(id).subscribe(res1 => {
             console.log(res1);
-            
+
            });
         });
-        // this.cartService.removeCart(varietyID).subscribe(res => { 
+        // this.cartService.removeCart(varietyID).subscribe(res => {
         // });
       }
     });
@@ -61,6 +62,7 @@ export class MiniCartComponent implements OnInit {
   }
   checkOut(cart:any){
 
+    this.router.navigate(['/checkout']);
   }
 
 }

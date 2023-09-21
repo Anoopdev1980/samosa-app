@@ -26,11 +26,15 @@
 </div>
 <div class="row">
     <ng-container *ngIf="cartTotal!=0">
-       
+
         <div class="total">
+
+          <a routerLink="./checkout" routerLinkActive="active">
+            My link
+          </a>
             <button type="button" class="btn btn-success" (click)="checkOut(carts)" >Checkout</button>
           total:  {{cartTotal}}
         </div>
-        
+
     </ng-container>
 </div>

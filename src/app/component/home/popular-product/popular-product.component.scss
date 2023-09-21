@@ -9,7 +9,7 @@
       display: block;
       margin-bottom: 20px;
       .name-price-wrapper{
-        padding: 15px 15px 15px 15px;
+       padding: 15px 15px 15px 15px;
         h4{
             font-family: $primary-font-family;
             text-transform: capitalize;
@@ -18,6 +18,8 @@
         .description{
             text-transform: capitalize;
             font-size: var(--font-size16);
+            min-height: 45px;
+
         }
         .price-addtocart{
           display: flex;
@@ -37,7 +39,6 @@
             }
         }
         }
-       
       }
   //  }
   }

@@ -24,6 +24,8 @@ export class PopularProductComponent implements OnInit {
   allSamosaList() {
     this.variety.getAllSamosaDetails().subscribe(res => {
       this.productList = res;
+      console.log(res,'====>>>');
+
     });
   }
   addToCart(prod: any, i: number) {

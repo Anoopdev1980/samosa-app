@@ -10,13 +10,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainCarouselComponent } from './main-carousel/main-carousel.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { PopularProductComponent } from './popular-product/popular-product.component';
+import { HomeBannerComponent } from './home-banner/home-banner.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     MainCarouselComponent,
     ProductCarouselComponent,
-    PopularProductComponent
+    PopularProductComponent,
+    HomeBannerComponent
   ],
   imports: [
     CommonModule,

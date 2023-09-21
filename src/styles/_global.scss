@@ -1,5 +1,5 @@
-@import './variable'; 
-@import './root'; 
+@import './variable';
+@import './root';
  body{
  font-family:$primary-font-family;
     font-size: 12px;
@@ -7,13 +7,14 @@
 h4,.h4{
     font-family:$primary-font-family;
 }
- 
+
 .bg-dark
 {
     background-color: var(--ssf-black);
     color: #d3d3d3;
-} 
-
+}
+app-home-banner{
+  background: url(../assets/images/topbackground.jpg);
+}
 
 //f8a92d
- 
